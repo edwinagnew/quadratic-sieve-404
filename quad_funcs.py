@@ -206,7 +206,7 @@ def b_factor(base, y):
                 
                 y = y/base[i]
                 
-                #break
+                break
                 
                 
     return factors
@@ -309,7 +309,7 @@ def matrix_structure_hueristic(M, target_dep=10, verbose=False):
     while(bpoint):
         #step 1: eject columns of weight 0
         bpoint = 0
-        for a_col in range(num_cols):
+        for a_col in range(num_cols - 1):
             #iterate through active columns 
             if eliminated_cols[active_ind + a_col] == 0:
                 #skip eliminated cols
@@ -318,7 +318,7 @@ def matrix_structure_hueristic(M, target_dep=10, verbose=False):
                     active_M[:, a_col] = [0]*num_rows
                     bpoint = 1
         #step 2: eject columns of weight 1 and corresponding row
-        for a_col in range(num_cols):
+        for a_col in range(num_cols - 1):
             #iterate through active columns 
             if eliminated_cols[active_ind + a_col] == 0:
                 #skip eliminated cols
