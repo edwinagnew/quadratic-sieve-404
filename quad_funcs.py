@@ -55,8 +55,14 @@ def erat_sieve(B):
 
 #@jit(nopython=True)
 def add_cols(M, a, b):
+    #print(type(M), type(M[:, a]))
+    #print(M[:, a], "\n", M[:, b])
     
-    return np.array([(M[i][a] + M[i][b]) % 2 for i in range(len(M))])
+    return (M[:, a] + M[:, b]) % 2
+
+    #return M[:, a] ^ M[:, b]
+    
+    #return np.array([(M[i][a] + M[i][b]) % 2 for i in range(len(M))])
 
 #@jit(nopython=True)
 def find_pivot(M, col):
@@ -105,7 +111,8 @@ def reduce_matrix(M):
 
 #@jit(nopython=True)
 def mod2(xs):
-    return np.array([x % 2 for x in xs])
+    return np.remainder(xs, 2)
+    #return np.array([x % 2 for x in xs])
 
 #@jit(nopython=True)
 def find_a(a, p):
@@ -249,6 +256,8 @@ def b_factor3(base, y):
     
 def bin_ladder(x, y, N):
     #compute x^y mod N
+    if y == 0: 
+        return 1
     
     y_string = bin(y)[2:]
     
