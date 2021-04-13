@@ -197,9 +197,9 @@ def b_factor(base, y):
     factors = np.zeros(len(base))
     
     while y > 1:
-        #x = max([b for b in base if b < math.sqrt(y) + 1])
-        x = len(base)
-        for i in range(len(base[:x])):
+        
+
+        for i in range(len(base)):
             
             if y % base[i] == 0:
                 factors[i] += 1
